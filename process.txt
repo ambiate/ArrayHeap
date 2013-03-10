@@ -1,0 +1,8 @@
+The system clock starts at 0 ticks. The simulator reads from the first line of input that there will be 5 processes to run.
+There are no processes that start at 0 ticks, so the system clock advances to the starting time of the next process, which is 10 ticks.
+The system clock is now 10 ticks, and the first process can be read from the file, given process id 0, and inserted into the heap. No other processes can start when the system clock is 10, so they are not yet read in.
+Process id 0 is on the top of the heap, and it should finish by 15 ticks (clock is currently at 10 ticks, plus 5 required ticks). Its deadline is 20 ticks, so it can run. It is run, and removed from the heap. Each time a process is run or skipped, it is removed from the heap.
+After running process id 0, the system clock is 15 ticks. Four more processes have started (they all have starting times of less than or equal to 15 ticks), so they are all read in, given process ids 1-4, and inserted into the heap.
+The next process to run is id 1, with deadline of 20 ticks. Currently at 15, requiring 5 ticks, the process can finish at 20 ticks, so it is allowed to run, and the system clock is now at 20 ticks.
+The next process to run is id 2, with deadline of 20 ticks. It requires 5 ticks and cannot finish in time, so it is skipped. The system clock is incremented by one tick. The same thing happens for process id 3.
+The system clock is now at 22 ticks. Process id 4 will run since it can complete before 30 ticks, and the final system clock is 27 ticks.
